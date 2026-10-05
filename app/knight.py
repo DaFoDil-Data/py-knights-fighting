@@ -8,5 +8,7 @@ class Knight:
         )
         potion = configuration.get("potion")
         if potion is not None:
-            for attribute, change in potion["effect"].items():
-                setattr(self, attribute, getattr(self, attribute) + change)
+            effects = potion["effect"]
+            self.hp += effects.get("hp", 0)
+            self.power += effects.get("power", 0)
+            self.protection += effects.get("protection", 0)
